@@ -1,3 +1,16 @@
+# Deskripsi Umum
+## Latar Belakang
+Mahasiswa yang merantau untuk menempuh pendidikan di Universitas Udayana memerlukan tempat tinggal yang nyaman dan sesuai dengan kebutuhan mereka. Banyaknya pilihan kost di sekitar kampus sering kali membuat mahasiswa kesulitan dalam menentukan kost yang paling sesuai berdasarkan faktor jarak, harga, fasilitas, dan kualitas tempat tinggal.
+
+Perkembangan teknologi memungkinkan pemanfaatan Sistem Pendukung Keputusan (Decision Support System/DSS) untuk membantu pengguna dalam memilih alternatif terbaik berdasarkan kriteria tertentu. Salah satu pendekatan yang dapat digunakan adalah struktur data Graph yang mampu merepresentasikan hubungan antar lokasi serta algoritma Dijkstra untuk menentukan jarak terpendek dari kampus menuju lokasi kost.
+
+Berdasarkan permasalahan tersebut, dibuat sebuah aplikasi DSS Pemilihan Kost di sekitar Universitas Udayana menggunakan Python, Streamlit, dan Folium Maps. Sistem ini diharapkan dapat membantu mahasiswa memperoleh rekomendasi kost yang sesuai dengan kebutuhan secara cepat dan objektif.
+
+## Rumusan Masalah
+1. Bagaimana menerapkan struktur data Graph pada sistem pemilihan kost?
+2. Bagaimana menerapkan algoritma Dijkstra untuk mencari jarak terpendek dari kampus ke lokasi kost?
+3. Bagaimana membangun sistem pendukung keputusan yang mampu memberikan rekomendasi kost berdasarkan harga, fasilitas,          rating, dan jarak?
+
 # 🏠 DSS Pemilihan Kost — Universitas Udayana, Bali
 
 Sistem pendukung keputusan (Decision Support System) untuk membantu mahasiswa memilih kost terbaik di sekitar Universitas Udayana, Jimbaran, Bali. Sistem menggunakan struktur data **Graph** dengan algoritma **Dijkstra** untuk mencari jalur terpendek dari kampus ke setiap kost, lalu memberikan rekomendasi berdasarkan kombinasi jarak, harga, dan rating.
