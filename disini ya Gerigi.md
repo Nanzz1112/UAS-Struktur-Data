@@ -46,3 +46,6 @@ Prinsip kerja algoritma Dijkstra adalah memilih node yang memiliki jarak sementa
 Langkah-langkah algoritma Dijkstra dimulai dengan menentukan node awal dan memberikan nilai jarak 0 pada node tersebut. Selanjutnya seluruh node lain diberi nilai tak hingga (∞). Algoritma kemudian memilih node dengan jarak terkecil, menghitung jarak baru ke node tetangganya, dan memperbarui nilai jarak apabila ditemukan jalur yang lebih pendek. Proses ini terus dilakukan hingga semua node telah dikunjungi.
 
 Algoritma Dijkstra memiliki beberapa kelebihan, antara lain mampu menemukan jalur terpendek secara optimal, mudah diimplementasikan, dan memiliki tingkat akurasi yang tinggi pada graph berbobot non-negatif. Namun, algoritma ini memiliki keterbatasan yaitu kurang efektif untuk graph yang memiliki bobot negatif.
+
+# BAB 3 ANALISIS dan PERANCANGAN
+## 3.1 Analisis Masalah
