@@ -54,3 +54,20 @@ Mahasiswa yang merantau untuk menempuh pendidikan di Universitas Udayana memerlu
 Proses pencarian kost secara manual membutuhkan waktu yang cukup lama karena pengguna harus membandingkan setiap alternatif satu per satu. Selain itu, pengguna sering mengalami kesulitan dalam menentukan kost yang memiliki lokasi paling dekat dengan kampus serta sesuai dengan budget yang dimiliki.
 
 Berdasarkan permasalahan tersebut, diperlukan sebuah Sistem Pendukung Keputusan (DSS) yang mampu membantu pengguna dalam memilih kost terbaik. Sistem ini memanfaatkan struktur data graph untuk merepresentasikan hubungan antar lokasi serta algoritma Dijkstra untuk menentukan jarak terpendek dari Kampus Udayana menuju lokasi kost.
+
+## 3.3 Flowchart
+```mermaid
+flowchart TD
+
+A([Mulai]) --> B[Pengguna memasukkan budget maksimum]
+B --> C[Pengguna memilih fasilitas yang diinginkan]
+C --> D[Sistem membangun graph berdasarkan data lokasi]
+D --> E[Sistem menghitung jarak antar lokasi menggunakan rumus Haversine]
+E --> F[Algoritma Dijkstra dijalankan untuk mencari jarak terpendek dari Kampus Udayana]
+F --> G[Sistem melakukan penyaringan berdasarkan budget dan fasilitas]
+G --> H[Sistem menghitung skor DSS setiap kost]
+H --> I[Sistem mengurutkan kost berdasarkan skor terbaik]
+I --> J[Sistem menampilkan rekomendasi kost]
+J --> K[Sistem menampilkan peta lokasi dan jalur terpendek]
+K --> L([Selesai])
+```
