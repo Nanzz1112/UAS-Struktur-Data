@@ -49,3 +49,8 @@ Algoritma Dijkstra memiliki beberapa kelebihan, antara lain mampu menemukan jalu
 
 # BAB 3 ANALISIS dan PERANCANGAN
 ## 3.1 Analisis Masalah
+Mahasiswa yang merantau untuk menempuh pendidikan di Universitas Udayana memerlukan tempat tinggal yang sesuai dengan kebutuhan dan kemampuan finansial. Banyaknya pilihan kost di sekitar kampus sering kali membuat mahasiswa kesulitan dalam menentukan pilihan yang tepat karena harus mempertimbangkan berbagai faktor seperti jarak, harga, fasilitas, dan kualitas kost.
+
+Proses pencarian kost secara manual membutuhkan waktu yang cukup lama karena pengguna harus membandingkan setiap alternatif satu per satu. Selain itu, pengguna sering mengalami kesulitan dalam menentukan kost yang memiliki lokasi paling dekat dengan kampus serta sesuai dengan budget yang dimiliki.
+
+Berdasarkan permasalahan tersebut, diperlukan sebuah Sistem Pendukung Keputusan (DSS) yang mampu membantu pengguna dalam memilih kost terbaik. Sistem ini memanfaatkan struktur data graph untuk merepresentasikan hubungan antar lokasi serta algoritma Dijkstra untuk menentukan jarak terpendek dari Kampus Udayana menuju lokasi kost.
