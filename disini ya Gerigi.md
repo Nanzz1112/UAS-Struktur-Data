@@ -76,6 +76,14 @@ K --> L([Selesai])
 ## 5.1 Skenario Pengujian
 Pengujian dilakukan untuk memastikan bahwa Sistem Pendukung Keputusan (Decision Support System/DSS) pemilihan kost di sekitar Universitas Udayana dapat berjalan sesuai dengan tujuan perancangan. Pengujian mencakup validasi fitur utama sistem, yaitu penyaringan berdasarkan anggaran (budget), penyaringan berdasarkan fasilitas, perhitungan jarak menggunakan algoritma Dijkstra, pemberian rekomendasi kost berdasarkan skor penilaian yang telah ditentukan, serta visualisasi lokasi pada peta.
 
+detail lebih lengkap ada pada video dibawah ini : 
+
+[Sistem Rekomandasi Kost di Drive](https://drive.google.com/file/d/1P1fgAaam-yd9ZSG-HiEo9kGAZRZdhmdD/view?usp=drive_link)
+
+atau
+
+[Sistem Rekomandasi Kost di Youtube](https://youtu.be/sxUQrldBZkk)
+
 ## 5.2 Analisis Hasil
 Berdasarkan hasil pengujian yang telah dilakukan, sistem pendukung keputusan pemilihan kost di sekitar Universitas Udayana mampu menjalankan seluruh fungsi utama sesuai dengan kebutuhan pengguna. Sistem berhasil melakukan penyaringan data kost berdasarkan anggaran dan fasilitas yang dipilih, sehingga pengguna dapat memperoleh daftar kost yang sesuai dengan kebutuhannya.
 
