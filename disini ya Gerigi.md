@@ -74,6 +74,8 @@ K --> L([Selesai])
 
 # BAB 5 PENGUJIAN DAN ANALISIS
 ## 5.1 Skenario Pengujian
+Pengujian dilakukan untuk memastikan bahwa Sistem Pendukung Keputusan (Decision Support System/DSS) pemilihan kost di sekitar Universitas Udayana dapat berjalan sesuai dengan tujuan perancangan. Pengujian mencakup validasi fitur utama sistem, yaitu penyaringan berdasarkan anggaran (budget), penyaringan berdasarkan fasilitas, perhitungan jarak menggunakan algoritma Dijkstra, pemberian rekomendasi kost berdasarkan skor penilaian yang telah ditentukan, serta visualisasi lokasi pada peta.
+
 ## 5.2 Analisis Hasil
 Berdasarkan hasil pengujian yang telah dilakukan, sistem pendukung keputusan pemilihan kost di sekitar Universitas Udayana mampu menjalankan seluruh fungsi utama sesuai dengan kebutuhan pengguna. Sistem berhasil melakukan penyaringan data kost berdasarkan anggaran dan fasilitas yang dipilih, sehingga pengguna dapat memperoleh daftar kost yang sesuai dengan kebutuhannya.
 
@@ -83,24 +85,65 @@ Penggunaan algoritma Dijkstra terbukti mampu menentukan jarak terpendek dari Uni
 
 Hasil rekomendasi yang diberikan sistem dapat membantu pengguna dalam memilih kost secara lebih cepat dibandingkan melakukan pencarian dan perbandingan secara manual. Selain itu, visualisasi peta yang disediakan membantu pengguna mengetahui lokasi kost secara lebih jelas.
 
-## Kompleksitas Algoritma
+## 5.3 Kompleksitas Algoritma
 Sistem menggunakan algoritma Dijkstra untuk menentukan jarak terpendek dari node Universitas Udayana menuju node kost yang tersedia pada graph. Implementasi algoritma menggunakan struktur data priority queue yang disediakan oleh library heapq pada Python.
 
-Kompleksitas waktu algoritma Dijkstra yang menggunakan priority queue adalah:
+### 5.3.1 Kompleksitas Pembentukan Graph
+Pada tahap awal, sistem membangun graph yang berisi 14 node yang terdiri dari 1 lokasi kampus dan 13 lokasi kost. Setiap node dihubungkan dengan node lainnya menggunakan bobot jarak yang dihitung menggunakan rumus Haversine.
 
-O((V + E) log V)
+Karena setiap node dibandingkan dengan seluruh node lainnya, maka kompleksitas waktu pembentukan graph adalah:
+```
+O(V^2)
+```
+dengan V adalah jumlah vertex pada graph.
 
+---
+
+### 5.3.2 Kompleksitas Algoritma Dijkstra
+
+Proses pencarian jarak terpendek menggunakan algoritma Dijkstra dengan bantuan priority queue (`heapq`).
+```
+O((V+E)\log V)
+```
 dengan:
+* V = jumlah vertex
+* E = jumlah edge
+Kompleksitas ini menunjukkan bahwa algoritma tetap efisien meskipun jumlah node bertambah.
 
-* V = jumlah vertex (node)
-* E = jumlah edge (sisi)
+---
 
-Pada sistem ini terdapat 14 node yang terdiri dari 1 node kampus dan 13 node kost. Selain itu, graph yang digunakan merupakan complete graph sehingga setiap node terhubung dengan node lainnya.
+### 5.3.3 Kompleksitas Sistem Rekomendasi
+Setelah jarak diperoleh, sistem melakukan proses filtering dan perhitungan skor terhadap seluruh alternatif kost.
 
-Kompleksitas ruang algoritma Dijkstra adalah:
+Jika terdapat n data kost, maka sistem perlu memeriksa setiap kost satu kali untuk:
+* mengecek budget,
+* mengecek fasilitas,
+* menghitung skor rekomendasi.
 
- O(V + E)
+Kompleksitas waktu proses ini adalah:
+```
+O(n)
+```
+karena setiap alternatif hanya diproses satu kali.
 
-Kompleksitas ruang tersebut digunakan untuk menyimpan adjacency list graph, tabel jarak, tabel predecessor, dan priority queue selama proses pencarian jalur berlangsung.
+# BAB 6 KESIMPULAN DAN SARAN
+## 6.1 Kesimpulan
+Berdasarkan hasil perancangan, implementasi, dan pengujian yang telah dilakukan, dapat disimpulkan bahwa Sistem Pendukung Keputusan (Decision Support System/DSS) untuk pemilihan kost di sekitar Universitas Udayana berhasil dikembangkan menggunakan struktur data graph dan algoritma Dijkstra. Sistem mampu membantu pengguna dalam memperoleh informasi serta rekomendasi kost berdasarkan beberapa kriteria yang telah ditentukan.
 
-Berdasarkan hasil implementasi, jumlah node dan edge yang digunakan masih relatif kecil sehingga proses perhitungan dapat dilakukan dengan sangat cepat. Oleh karena itu, algoritma Dijkstra dinilai cukup efisien dan sesuai untuk diterapkan pada sistem pendukung keputusan pemilihan kost yang dikembangkan.
+Struktur data graph berhasil digunakan untuk merepresentasikan hubungan antara lokasi Universitas Udayana dan lokasi kost yang tersedia. Setiap lokasi direpresentasikan sebagai node (vertex), sedangkan hubungan antar lokasi direpresentasikan sebagai edge yang memiliki bobot berupa jarak geografis. Representasi ini memungkinkan proses pencarian jarak dilakukan secara terstruktur dan efisien.
+
+Algoritma Dijkstra berhasil diterapkan untuk menghitung jarak terpendek dari Universitas Udayana menuju seluruh alternatif kost yang tersedia. Berdasarkan hasil pengujian, algoritma mampu menghasilkan informasi jarak secara akurat yang kemudian digunakan sebagai salah satu faktor dalam proses pengambilan keputusan.
+
+Selain itu, sistem mampu melakukan penyaringan data berdasarkan budget dan fasilitas yang dipilih pengguna. Hasil rekomendasi yang diberikan telah mempertimbangkan kombinasi faktor jarak, harga, dan rating sehingga dapat membantu pengguna dalam menentukan pilihan kost yang sesuai dengan kebutuhan.
+
+Dengan demikian, tujuan utama penelitian dan pengembangan sistem ini telah berhasil dicapai, yaitu menyediakan sistem pendukung keputusan yang dapat membantu mahasiswa dalam memilih kost secara lebih efektif, efisien, dan objektif.
+
+## 6.2 Saran
+Meskipun sistem yang dikembangkan telah mampu menjalankan fungsi utama dengan baik, masih terdapat beberapa hal yang dapat dikembangkan pada penelitian atau pengembangan selanjutnya.
+
+1. Menambahkan data kost yang lebih banyak dan lebih beragam sehingga hasil rekomendasi yang diberikan dapat mencakup lebih banyak alternatif pilihan bagi pengguna.
+2. Mengintegrasikan sistem dengan basis data atau layanan online sehingga informasi harga, fasilitas, dan ketersediaan kost dapat diperbarui secara otomatis tanpa perlu dilakukan secara manual.
+3. Menambahkan fitur penyesuaian bobot kriteria sehingga pengguna dapat menentukan tingkat prioritas masing-masing faktor, seperti harga, jarak, maupun rating sesuai dengan preferensi pribadi.
+4. Mengembangkan antarmuka pengguna yang lebih interaktif dan responsif agar pengalaman penggunaan sistem menjadi lebih nyaman.
+5. Melakukan perbandingan dengan algoritma pencarian atau metode pengambilan keputusan lainnya untuk mengetahui metode yang memberikan hasil paling optimal pada kasus pemilihan kost.
+6. Menambahkan fitur navigasi dan integrasi dengan layanan peta digital sehingga pengguna dapat memperoleh petunjuk arah secara langsung menuju lokasi kost yang dipilih.
