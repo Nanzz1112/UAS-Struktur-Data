@@ -71,6 +71,87 @@ I --> J[Sistem menampilkan rekomendasi kost]
 J --> K[Sistem menampilkan peta lokasi dan jalur terpendek]
 K --> L([Selesai])
 ```
+## 3.4 Use Case
+## 3.4 Use Case
+
+Use Case Diagram digunakan untuk menggambarkan interaksi antara pengguna dengan sistem DSS Pemilihan Kost. Pada sistem ini terdapat satu aktor yaitu **Pengguna** yang berinteraksi langsung dengan sistem untuk memperoleh rekomendasi kost.
+
+Aktor :
+* Pengguna (Mahasiswa)
+
+### 3.4.1 Tabel Use Case
+| No | Use Case                 | Deskripsi                                                                                                     |
+| -- | ------------------------ | ------------------------------------------------------------------------------------------------------------- |
+| 1  | Memasukkan Budget        | Pengguna memasukkan budget maksimum yang dapat digunakan untuk menyewa kost.                                  |
+| 2  | Memilih Fasilitas        | Pengguna memilih fasilitas yang diinginkan seperti WiFi, AC, Dapur, Parkir, atau Laundry.                     |
+| 3  | Melihat Rekomendasi Kost | Sistem menampilkan daftar kost yang sesuai dengan kriteria pengguna berdasarkan perhitungan DSS.              |
+| 4  | Melihat Detail Kost      | Pengguna dapat melihat informasi detail kost seperti harga, fasilitas, rating, dan deskripsi.                 |
+| 5  | Melihat Peta Lokasi      | Pengguna dapat melihat lokasi kost pada peta OpenStreetMap.                                                   |
+| 6  | Melihat Jalur Terpendek  | Pengguna dapat melihat jalur terpendek dari Kampus Udayana menuju lokasi kost berdasarkan algoritma Dijkstra. |
+
+### 3.4.2 Diagram Use Case
+```mermaid
+flowchart LR
+
+A[Mahasiswa]
+
+UC1((Memasukkan Budget Maksimum))
+UC2((Memilih Fasilitas))
+UC3((Melihat Rekomendasi Kost))
+UC4((Melihat Detail Kost))
+UC5((Melihat Jalur Terpendek))
+UC6((Melihat Peta Lokasi Kost))
+
+A --- UC1
+A --- UC2
+A --- UC3
+A --- UC4
+A --- UC5
+A --- UC6
+```
+## 3.5 Struktur Node dan Edge
+Struktur node dan edge digunakan untuk membangun graph yang merepresentasikan hubungan antara Kampus Udayana dan lokasi kost yang tersedia. Graph tersebut menjadi dasar dalam proses pencarian jarak terpendek menggunakan algoritma Dijkstra.
+
+### 3.5.1 Struktur Node
+Node merupakan representasi dari setiap lokasi yang terdapat pada sistem. Setiap node menyimpan informasi mengenai lokasi kost maupun kampus.
+
+Atribut yang dimiliki setiap node dapat dilihat pada tabel berikut.
+| Atribut   | Tipe Data | Keterangan                      |
+| --------- | --------- | ------------------------------- |
+| nama      | String    | Nama lokasi                     |
+| tipe      | String    | Jenis lokasi (kampus atau kost) |
+| lat       | Float     | Koordinat latitude              |
+| lon       | Float     | Koordinat longitude             |
+| harga     | Integer   | Harga kost per bulan            |
+| fasilitas | String    | Fasilitas yang tersedia         |
+| rating    | Float     | Rating kost                     |
+| deskripsi | String    | Deskripsi lokasi                |
+
+Contoh data node:
+| Nama               | Tipe   | Latitude | Longitude |
+| ------------------ | ------ | -------- | --------- |
+| Kampus Udayana     | Kampus | -8.7975  | 115.1686  |
+| Kost Jimbaran Asri | Kost   | -8.7920  | 115.1720  |
+| Kost Mutiara       | Kost   | -8.8010  | 115.1750  |
+
+### 3.5.2 Struktur Edge
+Edge merupakan hubungan yang menghubungkan dua node pada graph. Setiap edge memiliki bobot berupa jarak antar lokasi yang dihitung menggunakan rumus Haversine.
+
+Atribut edge dapat dilihat pada tabel berikut.
+| Atribut     | Tipe Data | Keterangan              |
+| ----------- | --------- | ----------------------- |
+| node_asal   | String    | Lokasi awal             |
+| node_tujuan | String    | Lokasi tujuan           |
+| bobot       | Float     | Jarak antar lokasi (km) |
+
+Contoh data edge:
+| Node Asal      | Node Tujuan        | Bobot (km) |
+| -------------- | ------------------ | ---------- |
+| Kampus Udayana | Kost Jimbaran Asri | 0,73       |
+| Kampus Udayana | Kost Mutiara       | 0,84       |
+| Kampus Udayana | Kost Bali Indah    | 1,12       |
+
+Pada sistem ini seluruh node saling terhubung sehingga membentuk graph berbobot (weighted graph). Bobot pada setiap edge digunakan oleh algoritma Dijkstra untuk menentukan jalur terpendek dari Kampus Udayana menuju lokasi kost yang tersedia.
 
 # BAB 5 PENGUJIAN DAN ANALISIS
 ## 5.1 Skenario Pengujian
