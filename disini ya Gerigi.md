@@ -166,27 +166,115 @@ Sistem juga menerapkan metode Decision Support System (DSS) untuk menentukan rek
 Selain menampilkan rekomendasi dalam bentuk daftar, sistem juga menampilkan visualisasi lokasi menggunakan peta digital OpenStreetMap melalui library Folium.
 
 ## 4.2 Penjelasan Kode
-### 4.2.1 Data Lokasi
-Bagian ini digunakan untuk menyimpan data Kampus Udayana dan seluruh lokasi kost. Setiap data lokasi memiliki atribut berupa nama, koordinat, harga, fasilitas, rating, dan deskripsi.
+### 4.2.1 Import Library
+Pada bagian awal program dilakukan import beberapa library yang digunakan untuk mendukung jalannya sistem.
 
-### 4.2.2 Fungsi Haversine
-Fungsi Haversine digunakan untuk menghitung jarak antara dua titik koordinat berdasarkan nilai latitude dan longitude. Hasil perhitungan digunakan sebagai bobot pada edge graph.
+```python
+import streamlit as st
+import folium
+from streamlit_folium import st_folium
+import heapq
+from collections import defaultdict
+import math
+import pandas as pd
+```
+Fungsi masing-masing library adalah sebagai berikut:
+| Library          | Fungsi                                    |
+| ---------------- | ----------------------------------------- |
+| Streamlit        | Membuat antarmuka sistem berbasis web     |
+| Folium           | Menampilkan peta digital                  |
+| Streamlit Folium | Menghubungkan Folium dengan Streamlit     |
+| Heapq            | Mendukung implementasi algoritma Dijkstra |
+| Defaultdict      | Menyimpan struktur graph                  |
+| Math             | Perhitungan matematis                     |
+| Pandas           | Menampilkan data dalam bentuk tabel       |
 
-### 4.2.3 Class Graph
-Class Graph digunakan untuk membangun struktur graph yang terdiri dari node dan edge. Class ini juga menyediakan fungsi untuk menambahkan edge serta menjalankan algoritma Dijkstra.
+### 4.2.2 Data Lokasi
+Data lokasi disimpan dalam variabel `LOKASI` yang berbentuk dictionary. Data ini berisi informasi kampus dan kost yang digunakan dalam sistem.
 
-### 4.2.4 Algoritma Dijkstra
-Fungsi Dijkstra digunakan untuk menghitung jarak terpendek dari Kampus Udayana menuju seluruh lokasi kost yang terdapat pada graph. Hasil perhitungan berupa jarak minimum dan jalur yang ditempuh.
+Setiap lokasi memiliki beberapa atribut yaitu:
+* tipe
+* latitude
+* longitude
+* harga
+* fasilitas
+* rating
+* deskripsi
 
-### 4.2.5 Fungsi Rekomendasi
-Fungsi rekomendasi digunakan untuk melakukan penyaringan berdasarkan budget dan fasilitas yang dipilih pengguna. Setelah itu sistem menghitung skor DSS untuk menentukan urutan rekomendasi kost.
+Data tersebut digunakan sebagai dasar pembentukan graph dan proses rekomendasi kost.
 
-### 4.2.6 Visualisasi Peta
-Visualisasi peta dibuat menggunakan library Folium dan OpenStreetMap. Peta menampilkan lokasi kampus, lokasi kost, serta jalur terpendek hasil perhitungan algoritma Dijkstra.
+### 4.2.3 Fungsi Haversine
+Fungsi Haversine digunakan untuk menghitung jarak antara dua titik koordinat berdasarkan latitude dan longitude.
 
-### 4.2.7 Antarmuka Pengguna
-Antarmuka sistem dibangun menggunakan Streamlit yang menyediakan fitur input budget, pemilihan fasilitas, daftar rekomendasi kost, peta lokasi, dan tabel hasil perhitungan Dijkstra.
+```python
+def haversine(lat1, lon1, lat2, lon2):
+```
+Hasil perhitungan jarak digunakan sebagai bobot pada edge graph sehingga sistem dapat mengetahui jarak antar lokasi secara lebih akurat.
 
+### 4.2.4 Class Graph
+Class Graph digunakan untuk membangun struktur data graph.
+
+```python
+class Graph:
+```
+Class ini memiliki beberapa fungsi utama:
+* `tambah_edge()` untuk menambahkan hubungan antar node.
+* `dijkstra()` untuk mencari jarak terpendek.
+* `ambil_jalur()` untuk menampilkan jalur yang dilalui.
+
+### 4.2.5 Pembuatan Graph
+Graph dibangun menggunakan fungsi:
+
+```python
+def buat_graph():
+```
+Fungsi ini menghubungkan seluruh lokasi dan menghitung bobot setiap edge menggunakan rumus Haversine.
+
+### 4.2.6 Algoritma Dijkstra
+Algoritma Dijkstra digunakan untuk menentukan jarak terpendek dari Kampus Udayana menuju seluruh lokasi kost.
+
+```python
+dist, prev = graph.dijkstra("Kampus Udayana")
+```
+Hasil yang diperoleh berupa:
+* Jarak minimum menuju setiap kost.
+* Jalur yang dilalui menuju kost tersebut.
+
+### 4.2.7 Sistem Rekomendasi DSS
+Fungsi rekomendasi digunakan untuk menentukan urutan kost terbaik berdasarkan kriteria yang dipilih pengguna.
+
+```python
+def rekomendasikan(dist, prev, budget_max, fasilitas_filter):
+```
+Proses yang dilakukan meliputi:
+1. Menyaring kost berdasarkan budget.
+2. Menyaring kost berdasarkan fasilitas.
+3. Mengambil hasil jarak dari Dijkstra.
+4. Menghitung skor DSS.
+5. Mengurutkan kost berdasarkan skor terbaik.
+
+### 4.2.8 Visualisasi Peta
+Visualisasi peta dibuat menggunakan Folium.
+
+```python
+def buat_peta():
+```
+Peta menampilkan:
+* Lokasi Kampus Udayana.
+* Lokasi seluruh kost.
+* Jalur rekomendasi terbaik.
+* Informasi detail setiap kost.
+
+### 4.2.9 Antarmuka Pengguna
+Antarmuka sistem dibangun menggunakan Streamlit.
+
+Komponen yang digunakan meliputi:
+* Slider budget.
+* Pilihan fasilitas.
+* Daftar rekomendasi kost.
+* Peta lokasi.
+* Tabel hasil algoritma Dijkstra.
+Melalui antarmuka ini pengguna dapat berinteraksi langsung dengan sistem untuk memperoleh rekomendasi kost sesuai kebutuhan.
 
 # BAB 5 PENGUJIAN DAN ANALISIS
 ## 5.1 Skenario Pengujian
