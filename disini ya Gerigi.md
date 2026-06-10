@@ -55,6 +55,64 @@ Proses pencarian kost secara manual membutuhkan waktu yang cukup lama karena pen
 
 Berdasarkan permasalahan tersebut, diperlukan sebuah Sistem Pendukung Keputusan (DSS) yang mampu membantu pengguna dalam memilih kost terbaik. Sistem ini memanfaatkan struktur data graph untuk merepresentasikan hubungan antar lokasi serta algoritma Dijkstra untuk menentukan jarak terpendek dari Kampus Udayana menuju lokasi kost.
 
+## 3.2 Desain Graph
+Desain graph digunakan untuk merepresentasikan hubungan antara Kampus Udayana dan lokasi kost yang tersedia dalam sistem. Setiap lokasi direpresentasikan sebagai node (simpul), sedangkan hubungan antar lokasi direpresentasikan sebagai edge (sisi). Setiap edge memiliki bobot berupa jarak antar lokasi yang dihitung menggunakan rumus Haversine berdasarkan koordinat latitude dan longitude.
+
+### 3.2.1 Node
+Node yang digunakan dalam sistem terdiri dari:
+- Kampus Udayana
+- Kost Jimbaran Asri
+- Kost Mutiara
+- Kost Bali Indah
+- Kost Sejahtera
+- Kost Harmoni
+- Kost Matahari
+- Kost Bukit Permai
+- Kost Griya Santai
+- Kost Pesona Bali
+- Kost Mahasiswa Jimbaran
+- Kost Nusa Indah
+- Kost Villa Jimbaran
+- Kost Tirta Sari
+
+### 3.2.2 Edge
+Edge digunakan untuk menghubungkan node satu dengan node lainnya. Bobot setiap edge berupa jarak antar lokasi dalam satuan kilometer yang dihitung menggunakan rumus Haversine.
+
+**Representasi Graph :**
+```mermaid
+graph TD
+
+A[Kampus Udayana]
+B[Kost Jimbaran Asri]
+C[Kost Mutiara]
+D[Kost Bali Indah]
+E[Kost Sejahtera]
+F[Kost Harmoni]
+G[Kost Matahari]
+H[Kost Bukit Permai]
+I[Kost Griya Santai]
+J[Kost Pesona Bali]
+K[Kost Mahasiswa Jimbaran]
+L[Kost Nusa Indah]
+M[Kost Villa Jimbaran]
+N[Kost Tirta Sari]
+
+A --- B
+A --- C
+A --- D
+A --- E
+A --- F
+A --- G
+A --- H
+A --- I
+A --- J
+A --- K
+A --- L
+A --- M
+A --- N
+```
+Gambar di atas menunjukkan representasi graph yang digunakan dalam sistem. Kampus Udayana berperan sebagai node awal (starting node) dalam proses pencarian jalur terpendek menggunakan algoritma Dijkstra, sedangkan seluruh lokasi kost menjadi node tujuan yang akan dievaluasi oleh sistem.
+
 ## 3.3 Flowchart
 ```mermaid
 flowchart TD
