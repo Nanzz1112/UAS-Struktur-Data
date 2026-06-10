@@ -79,6 +79,10 @@ Berdasarkan hasil pengujian yang telah dilakukan, sistem pendukung keputusan pem
 
 Penggunaan struktur data graph memungkinkan hubungan antar lokasi direpresentasikan dengan baik. Setiap kost direpresentasikan sebagai vertex (node), sedangkan hubungan antar lokasi direpresentasikan sebagai edge yang memiliki bobot berupa jarak geografis. Pendekatan ini memberikan dasar yang kuat bagi penerapan algoritma Dijkstra dalam menghitung jarak terpendek.
 
+Penggunaan algoritma Dijkstra terbukti mampu menentukan jarak terpendek dari Universitas Udayana menuju setiap alternatif kost. Informasi jarak tersebut kemudian dikombinasikan dengan faktor harga dan rating untuk menghasilkan skor rekomendasi yang digunakan dalam proses pengambilan keputusan.
+
+Hasil rekomendasi yang diberikan sistem dapat membantu pengguna dalam memilih kost secara lebih cepat dibandingkan melakukan pencarian dan perbandingan secara manual. Selain itu, visualisasi peta yang disediakan membantu pengguna mengetahui lokasi kost secara lebih jelas.
+
 ## Kompleksitas Algoritma
 Sistem menggunakan algoritma Dijkstra untuk menentukan jarak terpendek dari node Universitas Udayana menuju node kost yang tersedia pada graph. Implementasi algoritma menggunakan struktur data priority queue yang disediakan oleh library heapq pada Python.
 
