@@ -71,3 +71,10 @@ I --> J[Sistem menampilkan rekomendasi kost]
 J --> K[Sistem menampilkan peta lokasi dan jalur terpendek]
 K --> L([Selesai])
 ```
+
+# BAB 5 PENGUJIAN DAN ANALISIS
+## 5.1 Skenario Pengujian
+## 5.2 Analisis Hasil
+Berdasarkan hasil pengujian yang telah dilakukan, sistem pendukung keputusan pemilihan kost di sekitar Universitas Udayana mampu menjalankan seluruh fungsi utama sesuai dengan kebutuhan pengguna. Sistem berhasil melakukan penyaringan data kost berdasarkan anggaran dan fasilitas yang dipilih, sehingga pengguna dapat memperoleh daftar kost yang relevan dengan kebutuhannya.
+
+## Kompleksitas Algoritma
