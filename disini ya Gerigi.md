@@ -153,6 +153,41 @@ Contoh data edge:
 
 Pada sistem ini seluruh node saling terhubung sehingga membentuk graph berbobot (weighted graph). Bobot pada setiap edge digunakan oleh algoritma Dijkstra untuk menentukan jalur terpendek dari Kampus Udayana menuju lokasi kost yang tersedia.
 
+# BAB 4 IMPLEMENTASI
+## 4.1 Implementasi Program
+Implementasi program dilakukan menggunakan bahasa pemrograman Python dengan framework Streamlit sebagai antarmuka pengguna. Sistem dibangun untuk membantu mahasiswa dalam memilih kost yang sesuai berdasarkan jarak dari kampus, harga sewa, fasilitas yang tersedia, dan rating kost.
+
+Data lokasi kampus dan kost disimpan dalam struktur data dictionary yang berisi informasi nama lokasi, koordinat, harga, fasilitas, rating, dan deskripsi. Selanjutnya data tersebut digunakan untuk membentuk graph berbobot yang menghubungkan setiap lokasi.
+
+Bobot pada graph dihitung menggunakan rumus Haversine berdasarkan koordinat latitude dan longitude. Setelah graph terbentuk, algoritma Dijkstra digunakan untuk mencari jarak terpendek dari Kampus Udayana menuju setiap lokasi kost.
+
+Sistem juga menerapkan metode Decision Support System (DSS) untuk menentukan rekomendasi kost terbaik. Perhitungan DSS dilakukan dengan mempertimbangkan faktor jarak, harga, dan rating. Pengguna dapat menentukan budget maksimum serta fasilitas yang diinginkan sehingga sistem dapat menampilkan rekomendasi yang sesuai dengan kebutuhan.
+
+Selain menampilkan rekomendasi dalam bentuk daftar, sistem juga menampilkan visualisasi lokasi menggunakan peta digital OpenStreetMap melalui library Folium.
+
+## 4.2 Penjelasan Kode
+### 4.2.1 Data Lokasi
+Bagian ini digunakan untuk menyimpan data Kampus Udayana dan seluruh lokasi kost. Setiap data lokasi memiliki atribut berupa nama, koordinat, harga, fasilitas, rating, dan deskripsi.
+
+### 4.2.2 Fungsi Haversine
+Fungsi Haversine digunakan untuk menghitung jarak antara dua titik koordinat berdasarkan nilai latitude dan longitude. Hasil perhitungan digunakan sebagai bobot pada edge graph.
+
+### 4.2.3 Class Graph
+Class Graph digunakan untuk membangun struktur graph yang terdiri dari node dan edge. Class ini juga menyediakan fungsi untuk menambahkan edge serta menjalankan algoritma Dijkstra.
+
+### 4.2.4 Algoritma Dijkstra
+Fungsi Dijkstra digunakan untuk menghitung jarak terpendek dari Kampus Udayana menuju seluruh lokasi kost yang terdapat pada graph. Hasil perhitungan berupa jarak minimum dan jalur yang ditempuh.
+
+### 4.2.5 Fungsi Rekomendasi
+Fungsi rekomendasi digunakan untuk melakukan penyaringan berdasarkan budget dan fasilitas yang dipilih pengguna. Setelah itu sistem menghitung skor DSS untuk menentukan urutan rekomendasi kost.
+
+### 4.2.6 Visualisasi Peta
+Visualisasi peta dibuat menggunakan library Folium dan OpenStreetMap. Peta menampilkan lokasi kampus, lokasi kost, serta jalur terpendek hasil perhitungan algoritma Dijkstra.
+
+### 4.2.7 Antarmuka Pengguna
+Antarmuka sistem dibangun menggunakan Streamlit yang menyediakan fitur input budget, pemilihan fasilitas, daftar rekomendasi kost, peta lokasi, dan tabel hasil perhitungan Dijkstra.
+
+
 # BAB 5 PENGUJIAN DAN ANALISIS
 ## 5.1 Skenario Pengujian
 Pengujian dilakukan untuk memastikan bahwa Sistem Pendukung Keputusan (Decision Support System/DSS) pemilihan kost di sekitar Universitas Udayana dapat berjalan sesuai dengan tujuan perancangan. Pengujian mencakup validasi fitur utama sistem, yaitu penyaringan berdasarkan anggaran (budget), penyaringan berdasarkan fasilitas, perhitungan jarak menggunakan algoritma Dijkstra, pemberian rekomendasi kost berdasarkan skor penilaian yang telah ditentukan, serta visualisasi lokasi pada peta.
