@@ -75,6 +75,28 @@ K --> L([Selesai])
 # BAB 5 PENGUJIAN DAN ANALISIS
 ## 5.1 Skenario Pengujian
 ## 5.2 Analisis Hasil
-Berdasarkan hasil pengujian yang telah dilakukan, sistem pendukung keputusan pemilihan kost di sekitar Universitas Udayana mampu menjalankan seluruh fungsi utama sesuai dengan kebutuhan pengguna. Sistem berhasil melakukan penyaringan data kost berdasarkan anggaran dan fasilitas yang dipilih, sehingga pengguna dapat memperoleh daftar kost yang relevan dengan kebutuhannya.
+Berdasarkan hasil pengujian yang telah dilakukan, sistem pendukung keputusan pemilihan kost di sekitar Universitas Udayana mampu menjalankan seluruh fungsi utama sesuai dengan kebutuhan pengguna. Sistem berhasil melakukan penyaringan data kost berdasarkan anggaran dan fasilitas yang dipilih, sehingga pengguna dapat memperoleh daftar kost yang sesuai dengan kebutuhannya.
+
+Penggunaan struktur data graph memungkinkan hubungan antar lokasi direpresentasikan dengan baik. Setiap kost direpresentasikan sebagai vertex (node), sedangkan hubungan antar lokasi direpresentasikan sebagai edge yang memiliki bobot berupa jarak geografis. Pendekatan ini memberikan dasar yang kuat bagi penerapan algoritma Dijkstra dalam menghitung jarak terpendek.
 
 ## Kompleksitas Algoritma
+Sistem menggunakan algoritma Dijkstra untuk menentukan jarak terpendek dari node Universitas Udayana menuju node kost yang tersedia pada graph. Implementasi algoritma menggunakan struktur data priority queue yang disediakan oleh library heapq pada Python.
+
+Kompleksitas waktu algoritma Dijkstra yang menggunakan priority queue adalah:
+
+O((V + E) log V)
+
+dengan:
+
+* V = jumlah vertex (node)
+* E = jumlah edge (sisi)
+
+Pada sistem ini terdapat 14 node yang terdiri dari 1 node kampus dan 13 node kost. Selain itu, graph yang digunakan merupakan complete graph sehingga setiap node terhubung dengan node lainnya.
+
+Kompleksitas ruang algoritma Dijkstra adalah:
+
+ O(V + E)
+
+Kompleksitas ruang tersebut digunakan untuk menyimpan adjacency list graph, tabel jarak, tabel predecessor, dan priority queue selama proses pencarian jalur berlangsung.
+
+Berdasarkan hasil implementasi, jumlah node dan edge yang digunakan masih relatif kecil sehingga proses perhitungan dapat dilakukan dengan sangat cepat. Oleh karena itu, algoritma Dijkstra dinilai cukup efisien dan sesuai untuk diterapkan pada sistem pendukung keputusan pemilihan kost yang dikembangkan.
