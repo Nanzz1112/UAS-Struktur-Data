@@ -335,9 +335,17 @@ Komponen yang digunakan meliputi:
 Melalui antarmuka ini pengguna dapat berinteraksi langsung dengan sistem untuk memperoleh rekomendasi kost sesuai kebutuhan.
 
 ## 4.3 Tampilan Sistem
-Gambar ini menunjukkan tampilan utama aplikasi DSS Pemilihan Kost Universitas Udayana. Pada bagian kiri terdapat menu filter pencarian yang digunakan untuk menentukan budget maksimum dan fasilitas yang diinginkan. Pada bagian tengah ditampilkan peta lokasi kost menggunakan OpenStreetMap, sedangkan pada bagian kanan ditampilkan daftar rekomendasi kost hasil perhitungan DSS.
+Gambar pertama ini menunjukkan tampilan utama aplikasi DSS Pemilihan Kost Universitas Udayana. Pada bagian kiri terdapat menu filter pencarian yang digunakan untuk menentukan budget maksimum dan fasilitas yang diinginkan. Pada bagian tengah ditampilkan peta lokasi kost menggunakan OpenStreetMap, sedangkan pada bagian kanan ditampilkan daftar rekomendasi kost hasil perhitungan DSS.
 
 Pada kondisi ini budget maksimum diatur sebesar Rp2.000.000 sehingga seluruh kost yang tersedia memenuhi kriteria pencarian. Oleh karena itu sistem menampilkan sebanyak 13 rekomendasi kost. Berdasarkan hasil perhitungan DSS, Kost Pesona Bali menjadi rekomendasi terbaik dengan skor DSS sebesar -1,28 dan jarak 0,5 km dari Kampus Udayana.
+
+
+
+Gambar kedua ini menunjukkan hasil setelah pengguna mengubah budget maksimum menjadi Rp1.200.000. Sistem melakukan proses penyaringan berdasarkan kriteria yang dipilih sehingga jumlah rekomendasi berkurang dari 13 kost menjadi 8 kost.
+
+Setelah proses penyaringan dilakukan, sistem menjalankan algoritma Dijkstra untuk menghitung jarak terpendek dan menghitung skor DSS untuk setiap kost yang memenuhi kriteria. Hasilnya, Kost Jimbaran Asri menjadi rekomendasi terbaik dengan jarak 0,72 km dari Kampus Udayana, harga Rp900.000 per bulan, rating 4,3, serta skor DSS sebesar -1,25.
+
+Perubahan hasil rekomendasi menunjukkan bahwa sistem mampu menyesuaikan rekomendasi secara dinamis berdasarkan kebutuhan pengguna.
 
 # BAB 5 PENGUJIAN DAN ANALISIS
 ## 5.1 Skenario Pengujian
