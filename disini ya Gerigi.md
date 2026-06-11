@@ -334,6 +334,11 @@ Komponen yang digunakan meliputi:
 * Tabel hasil algoritma Dijkstra.
 Melalui antarmuka ini pengguna dapat berinteraksi langsung dengan sistem untuk memperoleh rekomendasi kost sesuai kebutuhan.
 
+## 4.3 Tampilan Sistem
+Gambar ini menunjukkan tampilan utama aplikasi DSS Pemilihan Kost Universitas Udayana. Pada bagian kiri terdapat menu filter pencarian yang digunakan untuk menentukan budget maksimum dan fasilitas yang diinginkan. Pada bagian tengah ditampilkan peta lokasi kost menggunakan OpenStreetMap, sedangkan pada bagian kanan ditampilkan daftar rekomendasi kost hasil perhitungan DSS.
+
+Pada kondisi ini budget maksimum diatur sebesar Rp2.000.000 sehingga seluruh kost yang tersedia memenuhi kriteria pencarian. Oleh karena itu sistem menampilkan sebanyak 13 rekomendasi kost. Berdasarkan hasil perhitungan DSS, Kost Pesona Bali menjadi rekomendasi terbaik dengan skor DSS sebesar -1,28 dan jarak 0,5 km dari Kampus Udayana.
+
 # BAB 5 PENGUJIAN DAN ANALISIS
 ## 5.1 Skenario Pengujian
 Pengujian dilakukan untuk memastikan bahwa Sistem Pendukung Keputusan (Decision Support System/DSS) pemilihan kost di sekitar Universitas Udayana dapat berjalan sesuai dengan tujuan perancangan. Pengujian mencakup validasi fitur utama sistem, yaitu penyaringan berdasarkan anggaran (budget), penyaringan berdasarkan fasilitas, perhitungan jarak menggunakan algoritma Dijkstra, pemberian rekomendasi kost berdasarkan skor penilaian yang telah ditentukan, serta visualisasi lokasi pada peta.
